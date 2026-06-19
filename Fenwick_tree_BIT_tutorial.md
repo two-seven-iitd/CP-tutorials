@@ -1,4 +1,5 @@
 # Fenwick Tree (Binary Indexed Tree) — Complete Tutorial
+[cp handbook tutorial](https://cses.fi/book/book.pdf#page=96)
 
 Everything you need to solve problems with Fenwick Trees — from the bit tricks to the templates to the problem patterns.
 

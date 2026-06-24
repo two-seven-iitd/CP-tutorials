@@ -171,6 +171,8 @@ This is where most people get stuck. Here's the systematic approach.
 
 ### The 3-Step Method
 
+> **T(n)** = the **total number of operations** performed by calling `f(n)`, including all its recursive calls and everything they trigger.
+
 For **any** recursive function:
 
 ```
@@ -638,16 +640,18 @@ def permutations(arr, l, r):
 <details>
 <summary>Solution</summary>
 
-At level `l`, the loop runs `n - l` times, each making a recursive call.
+At level `l`, the loop runs `n - l` times, each doing: 1 swap + recursive call + 1 swap = O(1) work + recursive call. At the base case (`l == r`), `print(arr)` costs O(n).
 
+T(1) = n
 ```
-T(n) = n · T(n-1)     (where n is remaining elements)
-     = n · (n-1) · T(n-2)
-     = n · (n-1) · (n-2) · ... · 1
-     = n!
+T(n) = n · T(n-1) + n     (n recursive calls each solving size n-1, + n swaps)
+     = n · [(n-1) · T(n-2) + (n-1)] + n
+     ...
 ```
 
-**Answer: Θ(n × n!)** (n! calls, each printing n elements)
+The `n · T(n-1)` term dominates → n! calls. Each base case prints n elements → n! × n work at the leaves alone.
+
+**Answer: Θ(n × n!)**
 
 </details>
 
